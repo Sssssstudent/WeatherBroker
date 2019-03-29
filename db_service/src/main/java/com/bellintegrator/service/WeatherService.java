@@ -1,7 +1,7 @@
 package com.bellintegrator.service;
 
 
-import dto.yahooforecast.YahooForecast;
+import com.bellintegrator.dto.yahooforecast.YahooForecast;
 
 /**
  * Сервис для обработки данных о погоде из БД

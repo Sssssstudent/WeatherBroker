@@ -1,8 +1,8 @@
-package authCreator;
+package authcreator;
 
 /**
-  *Данный класс содержит параметры аутентификации в сервисе Yahoo
-  */
+ * Данный класс содержит параметры аутентификации в сервисе Yahoo
+ */
 public class YahooAuth {
     final String appId = "77vrIz32";
     final String consumerKey = "dj0yJmk9NGFYME9CeTI5M1RxJnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PWNh";

@@ -1,6 +1,15 @@
 package com.bellintegrator.model;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,7 +19,7 @@ import java.util.Objects;
 @Entity
 public class Forecast implements Serializable {
 
-    private static final long serialVersionUID = 803745049486954945L;
+    private static final long serialVersionUID = 123456789012345614L;
 
     /**
      * Уникальный идентификатор

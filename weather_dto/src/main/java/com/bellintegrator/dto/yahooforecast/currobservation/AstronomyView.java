@@ -1,4 +1,4 @@
-package dto.yahooforecast.currobservation;
+package com.bellintegrator.dto.yahooforecast.currobservation;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,6 +10,8 @@ import java.util.Objects;
  * Информация о текущих астрономических условиях
  */
 public class AstronomyView implements Serializable {
+
+    private static final long serialVersionUID = 123456789012345605L;
 
     /**
      * Уникальный идентификатор

@@ -1,4 +1,4 @@
 /**
  * Данный пакет содержит классы для Yahoo
  */
-package dto.yahooforecast;
+package com.bellintegrator.dto.yahooforecast;

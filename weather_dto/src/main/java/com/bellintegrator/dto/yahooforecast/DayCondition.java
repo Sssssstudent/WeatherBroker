@@ -1,4 +1,4 @@
-package dto.yahooforecast;
+package com.bellintegrator.dto.yahooforecast;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,6 +14,9 @@ import java.util.Objects;
  * Погодные условия на день
  */
 public class DayCondition implements Serializable {
+
+    private static final long serialVersionUID = 123456789012345604L;
+
     /**
      * Уникальный идентификатор
      */
@@ -108,7 +111,7 @@ public class DayCondition implements Serializable {
 
     public void setZonedDateTime() {
         if (locationView != null) {
-            this.zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli((long) date*1000), ZoneId.of(locationView.getTimeZoneId()));
+            this.zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli((long) date * 1000), ZoneId.of(locationView.getTimeZoneId()));
         }
     }
 

@@ -1,8 +1,8 @@
-package dto.yahooforecast.currobservation;
+package com.bellintegrator.dto.yahooforecast.currobservation;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import dto.yahooforecast.LocationView;
+import com.bellintegrator.dto.yahooforecast.LocationView;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -14,6 +14,9 @@ import java.util.Objects;
  * Текущий обзор погоды
  */
 public class CurrentObservationView implements Serializable {
+
+    private static final long serialVersionUID = 123456789012345608L;
+
     /**
      * Уникальный идентификатор
      */
@@ -110,7 +113,7 @@ public class CurrentObservationView implements Serializable {
 
     public void setDate() {
         if (locationView != null) {
-            this.date = ZonedDateTime.ofInstant(Instant.ofEpochMilli((long) pubDate*1000), ZoneId.of(locationView.getTimeZoneId()));
+            this.date = ZonedDateTime.ofInstant(Instant.ofEpochMilli((long) pubDate * 1000), ZoneId.of(locationView.getTimeZoneId()));
         }
     }
 

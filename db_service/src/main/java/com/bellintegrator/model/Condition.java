@@ -1,6 +1,15 @@
 package com.bellintegrator.model;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Version;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,7 +20,7 @@ import java.util.Objects;
 @Table(name = "Condit")
 public class Condition implements Serializable {
 
-    private static final long serialVersionUID = 803745049486954965L;
+    private static final long serialVersionUID = 123456789012345612L;
 
     /**
      * Уникальный идентификатор

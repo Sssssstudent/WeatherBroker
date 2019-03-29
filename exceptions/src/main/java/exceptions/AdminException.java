@@ -1,4 +1,5 @@
 package exceptions;
+
 /**
  * Ошибка сервиса
  */

@@ -6,12 +6,12 @@
 
     <servlet>
         <servlet-name>weather</servlet-name>
-        <servlet-class>ru.bellintegrator.service.WeatherServiceImpl</servlet-class>
+        <servlet-class>com.bellintegrator.service.WeatherServiceImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <url-pattern>/weather</url-pattern>
         <servlet-name>weather</servlet-name>
+        <url-pattern>/weather</url-pattern>
     </servlet-mapping>
 
 </web-app>

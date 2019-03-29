@@ -1,8 +1,8 @@
-package dto.yahooforecast;
+package com.bellintegrator.dto.yahooforecast;
 
+import com.bellintegrator.dto.yahooforecast.currobservation.CurrentObservationView;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import dto.yahooforecast.currobservation.CurrentObservationView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,6 +12,9 @@ import java.util.List;
  * Результат запроса от Yahoo
  */
 public class YahooForecast implements Serializable {
+
+    private static final long serialVersionUID = 123456789012345602L;
+
     /**
      * Данные о геоположении
      */

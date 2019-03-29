@@ -1,4 +1,4 @@
-package dto.yahooforecast.currobservation;
+package com.bellintegrator.dto.yahooforecast.currobservation;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,6 +10,9 @@ import java.util.Objects;
  * Данные о текущем атмосферном давлении, влажности и видимости
  */
 public class AtmosphereView implements Serializable {
+
+    private static final long serialVersionUID = 123456789012345606L;
+
     /**
      * Уникальный идентификатор
      */

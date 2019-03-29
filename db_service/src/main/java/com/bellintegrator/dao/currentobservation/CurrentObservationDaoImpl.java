@@ -26,6 +26,7 @@ public class CurrentObservationDaoImpl implements CurrentObservationDao {
 
     /**
      * {@inheritDoc}
+     *
      * @param currentObservation
      */
     @Override
@@ -62,7 +63,7 @@ public class CurrentObservationDaoImpl implements CurrentObservationDao {
         predicates.add(builder.equal(root.get("location"), woeid));
 
         long millis = System.currentTimeMillis();
-        long lineDate = (millis - 6*60*60*1000)/1000;
+        long lineDate = (millis - 6 * 60 * 60 * 1000) / 1000;
         predicates.add(builder.greaterThan(root.get("pubDate"), lineDate));
 
         criteria.select(root).where(predicates.toArray(new Predicate[]{}));

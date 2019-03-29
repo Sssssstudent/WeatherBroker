@@ -1,7 +1,6 @@
 package com.bellintegrator.dao.forecast;
 
 
-
 import com.bellintegrator.model.Forecast;
 
 import javax.enterprise.context.RequestScoped;
@@ -19,6 +18,7 @@ public class ForecastDaoImpl implements ForecastDao {
 
     /**
      * {@inheritDoc}
+     *
      * @param forecast
      */
     @Override

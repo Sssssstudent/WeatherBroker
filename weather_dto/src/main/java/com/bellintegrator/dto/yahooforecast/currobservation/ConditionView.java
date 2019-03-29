@@ -1,4 +1,4 @@
-package dto.yahooforecast.currobservation;
+package com.bellintegrator.dto.yahooforecast.currobservation;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,6 +10,9 @@ import java.util.Objects;
  * Текущее состояние погоды
  */
 public class ConditionView implements Serializable {
+
+    private static final long serialVersionUID = 123456789012345607L;
+
     /**
      * Уникальный идентификатор
      */
@@ -56,28 +59,28 @@ public class ConditionView implements Serializable {
     }
 
     public String getText() {
-          return text;
-      }
+        return text;
+    }
 
     public void setText(String text) {
-          this.text = text;
-      }
+        this.text = text;
+    }
 
     public String getCode() {
-          return code;
-      }
+        return code;
+    }
 
     public void setCode(String code) {
-          this.code = code;
-      }
+        this.code = code;
+    }
 
     public String getTemperature() {
-          return temperature;
-      }
+        return temperature;
+    }
 
     public void setTemperature(String temperature) {
-          this.temperature = temperature;
-      }
+        this.temperature = temperature;
+    }
 
     public CurrentObservationView getCurrentObservationView() {
         return currentObservationView;
@@ -113,4 +116,4 @@ public class ConditionView implements Serializable {
                 ", temperature=" + temperature +
                 '}';
     }
-  }
+}

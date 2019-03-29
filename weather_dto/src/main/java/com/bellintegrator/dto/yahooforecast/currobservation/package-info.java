@@ -3,4 +3,4 @@
  * которую содержит класс CurrentObservationView, состоящий
  * из следующих классов: AstronomyView, AtmosphereView, ConditionView, WindView
  */
-package dto.yahooforecast.currobservation;
+package com.bellintegrator.dto.yahooforecast.currobservation;

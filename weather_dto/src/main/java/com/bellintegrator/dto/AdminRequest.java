@@ -1,4 +1,4 @@
-package dto;
+package com.bellintegrator.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 public class AdminRequest implements Serializable {
 
-
+    private static final long serialVersionUID = 123456789012345601L;
 
     /**
      * Название города

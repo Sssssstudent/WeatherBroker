@@ -1,6 +1,18 @@
 package com.bellintegrator.model;
 
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Version;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,7 +23,7 @@ import java.util.Objects;
 @Table(name = "Current_observation")
 public class CurrentObservation implements Serializable {
 
-    private static final long serialVersionUID = 803745049486954955L;
+    private static final long serialVersionUID = 123456789012345613L;
 
     /**
      * Уникальный идентификатор

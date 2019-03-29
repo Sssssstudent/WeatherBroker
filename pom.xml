@@ -44,20 +44,19 @@
     </properties>
 
     <dependencyManagement>
+
         <dependencies>
             <dependency>
                 <groupId>com.bellintegrator.weather</groupId>
                 <artifactId>weather_dto</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <version>${project.version}</version>
                 <artifactId>server</artifactId>
                 <type>war</type>
             </dependency>
-
             <dependency>
                 <groupId>com.bellintegrator.weather</groupId>
                 <artifactId>exceptions</artifactId>
@@ -70,21 +69,18 @@
                 <version>${jboss-servlet-api.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.jboss.spec.javax.annotation</groupId>
                 <artifactId>jboss-annotations-api_1.3_spec</artifactId>
                 <version>${jboss-annotations-api.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.jboss.spec.javax.ejb</groupId>
                 <artifactId>jboss-ejb-api_3.2_spec</artifactId>
                 <version>${jboss-ejb-api.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.jboss.spec.javax.jms</groupId>
                 <artifactId>jboss-jms-api_2.0_spec</artifactId>
@@ -98,21 +94,17 @@
                 <version>${cdi-api.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
                 <version>${javaee-api.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>javax.persistence</groupId>
                 <artifactId>javax.persistence-api</artifactId>
                 <version>${javax.persistence-api.version}</version>
             </dependency>
-
-
 
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -144,14 +136,12 @@
                 <version>${hibernate-core.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>${hibernate-entitymanager.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
@@ -172,13 +162,11 @@
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
@@ -191,7 +179,6 @@
                 <version>${taglibs.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.taglibs</groupId>
                 <artifactId>taglibs-standard-spec</artifactId>
@@ -205,7 +192,6 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
@@ -225,24 +211,20 @@
                 <artifactId>arquillian-container-test-spi</artifactId>
                 <version>${arquillian-container-test-spi.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.jboss.arquillian.junit</groupId>
                 <artifactId>arquillian-junit-container</artifactId>
                 <version>${arquillian-junit-container.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-    </dependencies>
-
 
 
     <build>
@@ -296,7 +278,6 @@
                         <port>9990</port>
                         <username>admin</username>
                         <password>admin.1234</password>
-                        <!--<jboss-home>local-jboss-home</jboss-home>-->
                         <name>${project.build.finalName}.${project.packaging}</name>
                     </configuration>
 
@@ -337,7 +318,8 @@
                                     </resource>
 
                                     <resource>
-                                        <address>subsystem=datasources,data-source=java:jboss/datasources/mySQL</address>
+                                        <address>subsystem=datasources,data-source=java:jboss/datasources/mySQL
+                                        </address>
                                         <properties>
                                             <jndi-name>java:jboss/datasources/mySQL</jndi-name>
                                             <enabled>true</enabled>
@@ -354,8 +336,8 @@
                         </execution>
                     </executions>
                 </plugin>
-        </plugins>
-    </pluginManagement>
+            </plugins>
+        </pluginManagement>
 
         <plugins>
             <plugin>

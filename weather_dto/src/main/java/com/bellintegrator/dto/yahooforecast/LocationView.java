@@ -1,8 +1,8 @@
-package dto.yahooforecast;
+package com.bellintegrator.dto.yahooforecast;
 
+import com.bellintegrator.dto.yahooforecast.currobservation.CurrentObservationView;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dto.yahooforecast.currobservation.CurrentObservationView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,6 +13,8 @@ import java.util.Objects;
  * Геоданные о городе
  */
 public class LocationView implements Serializable {
+
+    private static final long serialVersionUID = 123456789012345603L;
 
     /**
      * Уникальный идентификатор

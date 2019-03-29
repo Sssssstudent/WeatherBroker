@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,7 +22,7 @@
             <td style="text-align: right;"><label for="city">City:</label>
             </td>
             <td><input type="text" id="city" name="city"
-                       value="${city.city}" placeholder = "Moscow or New York" /></td>
+                       value="${city.city}" placeholder="Moscow or New York"/></td>
             <td><label style="color: red; width: 100%;text-align: left;">${errorMessageName}</label></td>
         </tr>
         <tr>
@@ -36,7 +36,7 @@
         </tr>
     </table>
     <p>
-        <input id="submit" type="submit" value="Submit" />
+        <input id="submit" type="submit" value="Submit"/>
     </p>
 </form>
 </body>

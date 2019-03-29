@@ -1,8 +1,8 @@
 package retriever;
 
 
-import authCreator.AuthCreator;
-import dto.yahooforecast.YahooForecast;
+import authcreator.AuthCreator;
+import com.bellintegrator.dto.yahooforecast.YahooForecast;
 import exceptions.AdminException;
 import jms.JmsSender;
 import org.slf4j.Logger;
@@ -18,50 +18,66 @@ import javax.inject.Inject;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
 
-
+/**
+ * {@inheritDoc}
+ */
 @ApplicationScoped
 public class YahooRetrieverImpl implements YahooRetriever {
+
     private final Logger log = LoggerFactory.getLogger(YahooRetrieverImpl.class);
+    RestTemplate restTemplate = new RestTemplate();
+
+
+    private JMSContext context;
+
+
+    private AuthCreator authCreator;
+
+
+    private JmsSender jmsSender;
 
     @Resource(mappedName = "java:/jms/queue/dbQueue")
     private Queue queue;
 
     @Inject
-    private JMSContext context;
+    public YahooRetrieverImpl(JMSContext context, AuthCreator authCreator, JmsSender jmsSender) {
+        this.context = context;
+        this.authCreator = authCreator;
+        this.jmsSender = jmsSender;
+    }
 
-    @Inject
-    private AuthCreator authCreator;
+    public YahooRetrieverImpl() {
+    }
 
-    @Inject
-    private JmsSender jmsSender;
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void retrieve(String city, String region){
+    public void retrieve(String city, String region) {
 
-        HttpEntity<String> entity = authCreator.create(city, region);
-        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<String> entity = authCreator.createHeaders(city, region);
         ResponseEntity<YahooForecast> result = restTemplate.exchange(
                 "https://weather-ydn-yql.media.yahoo.com/forecastrss?location=" + city + "," + region + "&format=json&u=c",
                 HttpMethod.GET, entity, YahooForecast.class);
 
-        if(result.getStatusCodeValue() != 200) {
+        if (result.getStatusCodeValue() != 200) {
             throw new AdminException("Service is temporarily unavailable. Try later");
         }
 
         YahooForecast yahooForecast = result.getBody();
-        if(yahooForecast == null || yahooForecast.getLocationView() == null || yahooForecast.getLocationView().getWoeid() == null) {
+        if (yahooForecast == null || yahooForecast.getLocationView() == null || yahooForecast.getLocationView().getWoeid() == null) {
             throw new AdminException("Wrong city or region! Try again");
         }
-        if(yahooForecast.getCurrObservationView() == null || yahooForecast.getCurrObservationView().getPubDate() == null ||
+        if (yahooForecast.getCurrObservationView() == null || yahooForecast.getCurrObservationView().getPubDate() == null ||
                 yahooForecast.getForecasts() == null || yahooForecast.getForecasts().isEmpty() ||
                 yahooForecast.getForecasts().get(0) == null) {
             throw new AdminException("Service is temporarily unavailable. Try later");
         }
 
         try {
-            jmsSender.sendMessage(yahooForecast,context,queue);
+            jmsSender.sendMessage(yahooForecast, context, queue);
             log.info("Message has been send to dbQueue");
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 

@@ -26,11 +26,11 @@
           class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
         <property name="serviceUrl"
                   value="http://127.0.0.1:8080/db_service-1.0-SNAPSHOT/weather"></property>
-        <property name="serviceInterface" value="ru.bellintegrator.service.WeatherService"></property>
+        <property name="serviceInterface" value="com.bellintegrator.service.WeatherService"></property>
     </bean>
 
-    <context:component-scan base-package="ru.bellintegrator.view" />
+    <context:component-scan base-package="com.bellintegrator.dto"/>
 
-    <context:component-scan base-package="ru.bellintegrator.service" />
+    <context:component-scan base-package="com.bellintegrator.service"/>
 
 </beans>

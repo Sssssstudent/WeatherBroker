@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class WeatherInfo implements Serializable {
 
-    private static final long serialVersionUID = 803745049486954915L;
+    private static final long serialVersionUID = 123456789012345616L;
 
     /**
      * Местоположение

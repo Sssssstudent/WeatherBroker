@@ -7,13 +7,22 @@ import com.bellintegrator.dao.currentobservation.CurrentObservationDao;
 import com.bellintegrator.dao.forecast.ForecastDao;
 import com.bellintegrator.dao.location.LocationDao;
 import com.bellintegrator.dao.wind.WindDao;
-import com.bellintegrator.model.*;
+import com.bellintegrator.model.Astronomy;
+import com.bellintegrator.model.Atmosphere;
+import com.bellintegrator.model.Condition;
+import com.bellintegrator.model.CurrentObservation;
+import com.bellintegrator.model.Forecast;
+import com.bellintegrator.model.Location;
+import com.bellintegrator.model.Wind;
 import com.caucho.hessian.server.HessianServlet;
-import dto.yahooforecast.DayCondition;
-import dto.yahooforecast.LocationView;
-import dto.yahooforecast.YahooForecast;
-import dto.yahooforecast.currobservation.*;
-import dto.yahooforecast.currobservation.CurrentObservationView;
+import com.bellintegrator.dto.yahooforecast.DayCondition;
+import com.bellintegrator.dto.yahooforecast.LocationView;
+import com.bellintegrator.dto.yahooforecast.YahooForecast;
+import com.bellintegrator.dto.yahooforecast.currobservation.AstronomyView;
+import com.bellintegrator.dto.yahooforecast.currobservation.AtmosphereView;
+import com.bellintegrator.dto.yahooforecast.currobservation.ConditionView;
+import com.bellintegrator.dto.yahooforecast.currobservation.CurrentObservationView;
+import com.bellintegrator.dto.yahooforecast.currobservation.WindView;
 import ma.glasnost.orika.MapperFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +32,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 /**
@@ -73,11 +81,11 @@ public class WeatherServiceImpl extends HessianServlet implements WeatherService
     @Transactional
     public YahooForecast getWeatherFromDB(String city) {
         Location location = locationDao.findByCity(city);
-        if(location == null) {
+        if (location == null) {
             return null;
         }
         CurrentObservation currentObservation = currentObservationDao.findByParameters(location.getWoeid());
-        if(currentObservation == null) {
+        if (currentObservation == null) {
             return null;
         }
         currentObservation.setLocation(null);
@@ -117,7 +125,7 @@ public class WeatherServiceImpl extends HessianServlet implements WeatherService
      * Сохранить прогноз погоды на 10 дней
      *
      * @param forecasts прогноз погоды на 10 дней
-     * @param location местоположение
+     * @param location  местоположение
      */
     private void saveForecasts(List<DayCondition> forecasts, Location location) {
         for (DayCondition forecastView : forecasts) {
@@ -131,10 +139,10 @@ public class WeatherServiceImpl extends HessianServlet implements WeatherService
      * Сохранить текущий обзор погоды
      *
      * @param currentObservationView текущий обзор погоды
-     * @param location местоположение
+     * @param location               местоположение
      */
     private void saveCurrentObservation(CurrentObservationView currentObservationView, Location location) {
-        if(currentObservationView.getAstronomyView() != null && currentObservationView.getAtmosphereView() != null &&
+        if (currentObservationView.getAstronomyView() != null && currentObservationView.getAtmosphereView() != null &&
                 currentObservationView.getConditionView() != null && currentObservationView.getWindView() != null) {
             com.bellintegrator.model.CurrentObservation newCurrentObservation = new com.bellintegrator.model.CurrentObservation(location, currentObservationView.getPubDate());
             currentObservationDao.save(newCurrentObservation);
@@ -149,7 +157,7 @@ public class WeatherServiceImpl extends HessianServlet implements WeatherService
     /**
      * Сохранить информацию о текущих астрономических условиях
      *
-     * @param astronomyView информация о текущих астрономических условиях
+     * @param astronomyView      информация о текущих астрономических условиях
      * @param currentObservation текущий обзор погоды
      */
     private void saveAstronomy(AstronomyView astronomyView, com.bellintegrator.model.CurrentObservation currentObservation) {
@@ -161,7 +169,7 @@ public class WeatherServiceImpl extends HessianServlet implements WeatherService
     /**
      * Сохранить информацию о текущем атмосферном давлении, влажности и видимости
      *
-     * @param atmosphereView информация о текущем атмосферном давлении, влажности и видимости
+     * @param atmosphereView     информация о текущем атмосферном давлении, влажности и видимости
      * @param currentObservation текущий обзор погоды
      */
     private void saveAtmosphere(AtmosphereView atmosphereView, com.bellintegrator.model.CurrentObservation currentObservation) {
@@ -173,7 +181,7 @@ public class WeatherServiceImpl extends HessianServlet implements WeatherService
     /**
      * Сохранить информацию о текущем состоянии погоды
      *
-     * @param conditionView текущее состояние погоды
+     * @param conditionView      текущее состояние погоды
      * @param currentObservation текущий обзор погоды
      */
     private void saveCondition(ConditionView conditionView, com.bellintegrator.model.CurrentObservation currentObservation) {
@@ -185,7 +193,7 @@ public class WeatherServiceImpl extends HessianServlet implements WeatherService
     /**
      * Сохранить текущую информацию о ветре
      *
-     * @param windView текущая информация о ветре
+     * @param windView           текущая информация о ветре
      * @param currentObservation текущий обзор погоды
      */
     private void saveWind(WindView windView, com.bellintegrator.model.CurrentObservation currentObservation) {

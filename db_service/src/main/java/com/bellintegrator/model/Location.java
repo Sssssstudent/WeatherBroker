@@ -1,6 +1,12 @@
 package com.bellintegrator.model;
 
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Version;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +18,7 @@ import java.util.Objects;
 @Entity
 public class Location implements Serializable {
 
-    private static final long serialVersionUID = 803745049486954935L;
+    private static final long serialVersionUID = 123456789012345615L;
 
     /**
      * Уникальный идентификатор города (WOEID - Where On Earth IDentifier)

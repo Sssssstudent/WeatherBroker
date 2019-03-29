@@ -1,7 +1,7 @@
 package com.bellintegrator.jms;
 
 import com.bellintegrator.service.WeatherService;
-import dto.yahooforecast.YahooForecast;
+import com.bellintegrator.dto.yahooforecast.YahooForecast;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +19,7 @@ import javax.jms.ObjectMessage;
 @MessageDriven(name = "DataReceiver", activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jms/queue/dbQueue"),
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-        @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+        @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge")})
 public class DataReceiver implements MessageListener {
 
     private final Logger log = LoggerFactory.getLogger(DataReceiver.class);
@@ -43,7 +43,7 @@ public class DataReceiver implements MessageListener {
     public void onMessage(Message message) {
         ObjectMessage objectMessage = null;
         try {
-            if(message instanceof ObjectMessage) {
+            if (message instanceof ObjectMessage) {
                 objectMessage = (ObjectMessage) message;
                 YahooForecast yahooForecast = objectMessage.getBody(YahooForecast.class);
                 log.info("WeatherInfo message has been received");

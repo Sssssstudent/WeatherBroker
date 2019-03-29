@@ -18,6 +18,7 @@ public class WindDaoImpl implements WindDao {
 
     /**
      * {@inheritDoc}
+     *
      * @param wind
      */
     @Override

@@ -18,6 +18,7 @@ public class AtmosphereDaoImpl implements AtmosphereDao {
 
     /**
      * {@inheritDoc}
+     *
      * @param atmosphere
      */
     @Override

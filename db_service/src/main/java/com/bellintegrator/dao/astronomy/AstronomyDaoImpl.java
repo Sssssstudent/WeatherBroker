@@ -18,6 +18,7 @@ public class AstronomyDaoImpl implements AstronomyDao {
 
     /**
      * {@inheritDoc}
+     *
      * @param astronomy
      */
     @Override

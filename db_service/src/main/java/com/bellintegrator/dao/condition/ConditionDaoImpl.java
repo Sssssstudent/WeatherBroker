@@ -18,6 +18,7 @@ public class ConditionDaoImpl implements ConditionDao {
 
     /**
      * {@inheritDoc}
+     *
      * @param condition
      */
     @Override

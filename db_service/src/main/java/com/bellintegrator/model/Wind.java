@@ -1,6 +1,14 @@
 package com.bellintegrator.model;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Version;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,7 +18,7 @@ import java.util.Objects;
 @Entity
 public class Wind implements Serializable {
 
-    private static final long serialVersionUID = 803745049486954925L;
+    private static final long serialVersionUID = 123456789012345617L;
 
     /**
      * Уникальный идентификатор
